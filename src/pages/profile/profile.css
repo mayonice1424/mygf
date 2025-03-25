@@ -1,0 +1,17 @@
+/* Pastikan gambar diatur dengan benar */
+img {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Tombol navigasi */
+button {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+/* Tombol aktif */
+button:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 1);
+}
