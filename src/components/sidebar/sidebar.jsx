@@ -97,7 +97,7 @@ const Sidebar = ({ open, data, setOpen }) => {
       <div
         className={`${
           open ? "md:w-96" : "md:w-24"
-        } hidden flex-col duration-500 md:flex min-h-screen pb-10 dark:bg-radial-[at_50%_75%] bg-white dark:from-sky-900 dark:via-sky-950 dark:to-zinc-900 to-100%
+        } hidden flex-col duration-500 md:flex min-h-screen pb-10 dark:bg-radial-[at_50%_75%] bg-white dark:from-zinc-800  dark:to-zinc-900 to-100%
 `}
       >
         <div className="w-[100%] items-start content-center justify-evenly pt dark:from-sky-900 dark:via-sky-950 dark:to-zinc-900 to-100% flex">

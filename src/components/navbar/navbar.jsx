@@ -92,7 +92,14 @@ const Navbar = ({ open, setOpen, data }) => {
     console.log(capitalizeFirstLetter(firstSegment));
     // checkToken()
   }, [localStorage.getItem("activePage")]);
+  const [theme, setTheme] = useState("light");
 
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
   return (
     <>
       <Modal
@@ -105,14 +112,14 @@ const Navbar = ({ open, setOpen, data }) => {
         <div className="w-[90%] md:w-[84%] lg:w-[90%] flex-row flex relative  items-center ">
           <div
             onClick={() => setOpen(!open)}
-            className={`absolute z-50 bg-zinc-300  border-zinc-400 justify-center content-center flex-wrap items-center px-4 py-4 ml-[-10] hidden ${
+            className={`absolute z-50 dark:bg-zinc-300  dark:border-zinc-400 bg-[#70acffc9] border-[#3c8dffc9] justify-center content-center flex-wrap items-center px-4 py-4 ml-[-10] hidden ${
               !open && "hidden"
             } lg:flex cursor-pointer rounded-full border-2 `}
           >
             <RxHamburgerMenu
               className={`${
                 !open && "rotate-180"
-              } text-zinc-600  absolute w-4 h-4`}
+              } dark:text-zinc-600 text-white  absolute w-5 h-5`}
               src={"/control.png"}
               alt="control"
             />
@@ -120,16 +127,18 @@ const Navbar = ({ open, setOpen, data }) => {
           {/* sidebar mobile navbar */}
           <div
             onClick={() => setNav(true)}
-            className={`absolute justify-center border-zinc-400 content-center flex-wrap items-center px-4 py-4 ml-[-10] flex  bg-zinc-300 cursor-pointer rounded-full border-2 `}
+            className={`absolute justify-center dark:bg-zinc-300  dark:border-zinc-400 bg-[#70acffc9] border-[#3c8dffc9] content-center flex-wrap items-center px-4 py-4 ml-[-10] flex   cursor-pointer rounded-full border-2 `}
           >
             <RxHamburgerMenu
-              className={`${!open}  text-zinc-600 absolute w-4 h-4`}
+              className={`${
+                !open && "rotate-180"
+              } dark:text-zinc-600 text-white  absolute w-5 h-5`}
               src={"/control.png"}
               alt="control"
             />
           </div>
           <div className="ml-16">
-            <h1 className="text-2xl font-semibold text-zinc-900 ">
+            <h1 className="text-2xl  font-normal text-zinc-600  ">
               {activeButton}
             </h1>
           </div>
@@ -146,18 +155,20 @@ const Navbar = ({ open, setOpen, data }) => {
             onClick={() => {
               setVisible(!visible);
             }}
-            className={`cursor-pointer absolute w-[2%] mr-14 justify-center rounded-full border-2 border-zinc-400  bg-zinc-300  flex-col  px-4 py-4  flex content-center flex-wrap items-center`}
+            className={`cursor-pointer absolute w-[2%] mr-14 justify-center rounded-full border-2 dark:bg-zinc-300  dark:border-zinc-400 bg-[#70acffc9] border-[#3c8dffc9]  flex-col  px-4 py-4  flex content-center flex-wrap items-center`}
           >
-            <IoIosNotifications className={`text-zinc-600 absolute w-7 h-6`} />
+            <IoIosNotifications
+              className={`dark:text-zinc-600 text-white absolute w-7 h-6`}
+            />
           </div>
-          <div className="absolute w-[2%] ml-10 justify-center rounded-full border-2 border-zinc-400  bg-zinc-300  flex-col px-4 py-4  flex content-center flex-wrap items-center cursor-pointer">
+          <div className="absolute w-[2%] ml-10 justify-center rounded-full border-2 dark:bg-zinc-300  dark:border-zinc-400 bg-[#70acffc9] border-[#3c8dffc9] flex-col px-4 py-4  flex content-center flex-wrap items-center cursor-pointer">
             <CiLogin
               onClick={() => {
                 localStorage.removeItem("activePage");
                 localStorage.removeItem("token");
                 window.location.href = "/login";
               }}
-              className={`absolute text-zinc-600 w-7 h-6`}
+              className={`absolute dark:text-zinc-600 text-white w-7 h-6`}
             />
           </div>
         </div>
@@ -188,7 +199,9 @@ const Navbar = ({ open, setOpen, data }) => {
         className={`${
           nav ? "translate-x-0" : "-translate-x-full"
         } duration-500 md:hidden ${
-          visible ? "" : "bg-zinc-900"
+          visible
+            ? ""
+            : "dark:bg-radial-[at_50%_75%] bg-white dark:from-zinc-800  dark:to-zinc-900 to-100%"
         }  absolute w-3/4 z-50 h-full bottom-0`}
       >
         <div className="px-8">
@@ -196,8 +209,12 @@ const Navbar = ({ open, setOpen, data }) => {
             <div className="w-[100%] items-start content-start  flex">
               <div className="w-full h-32  content-center items-center justify-center flex">
                 <img
-                  src="/assets/logo_white_mode.png"
-                  className={`w-60 h-16 `}
+                  src={
+                    theme === "dark"
+                      ? "/assets/logo_white_mode.png"
+                      : "/assets/logo.png"
+                  }
+                  className={`${open ? "w-full mt-5" : "w-1/2"}`}
                 />
               </div>
             </div>
@@ -236,9 +253,13 @@ const Navbar = ({ open, setOpen, data }) => {
                 const dasboardRoute = "/dashboard";
                 navigate(dasboardRoute);
               }}
-              className={`flex flex-row content-center justify-evenly items-center px-6 h-11 py-7 ${
-                activeButton === "Dashboard" ? "bg-zinc-700 rounded-[20px]" : ""
-              } cursor-pointer`}
+              className={`flex flex-row content-center rounded-[20px] py-10 justify-evenly items-center px-6 h-11  ${
+                activeButton === "Dashboard" && open
+                  ? "bg-[#70acffc9] dark:bg-white bg-linear-to-t"
+                  : activeButton === "Dashboard" && !open
+                  ? "bg-[#70acffc9] dark:bg-white bg-linear-to-t"
+                  : ""
+              }  cursor-pointer`}
             >
               <BiSolidHome className="text-white w-8 h-8" />
               <div className="w-full pl-5">
@@ -276,6 +297,16 @@ const Navbar = ({ open, setOpen, data }) => {
           </div>
         </div>
       </div>
+      <div
+        onClick={() => setNav(false)}
+        className={`${
+          nav ? "translate-x-0" : "-translate-x-500"
+        } duration-500 md:hidden ${
+          visible
+            ? ""
+            : "dark:bg-radial-[at_50%_75%] bg-black/20 right-0  dark:from-zinc-800  dark:to-zinc-900 to-100%"
+        }  absolute w-1/4 z-100 h-full bottom-0`}
+      ></div>
     </>
   );
 };

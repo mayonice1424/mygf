@@ -3,6 +3,8 @@ import "./dashboard.css";
 import { GrFormPrevious } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
 import { motion } from "framer-motion";
+import CardApps from "@/components/cardmenu/cardApps";
+import CardSm from "@/components/cardSocialMedia/cardSm";
 const Dashboard = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -36,18 +38,27 @@ const Dashboard = () => {
   return (
     <div className="w-full  bg-zinc-50 flex flex-col h-full overflow-y-auto">
       <div className="w-full relative rounded-lg flex-col flex justify-center">
-        <div className="w-full bg-red-300 justify-center flex duration-300 ease-in-out">
-          <div className="w-full select-none  bg-[] bg-radial-[at_50%_75%] transition-colors   to-100% p-2 rounded-3xl h-full">
-            <img
-              src={images[currentSlide]}
-              alt="carousel"
-              className="rounded-3xl px-52"
-            />
+        <div className="w-full  justify-center flex duration-300 ease-in-out">
+          <div className="w-8/9 bg-[url(/assets/background.jpg)] select-none transition-colors p-2 rounded-3xl h-full">
+            <div className="relative w-full h-full overflow-hidden">
+              <div
+                className="flex transition-transform duration-1000 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }} // Slides horizontally
+              >
+                {images.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`carousel ${index}`}
+                    className="w-full  px-52"
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-
         <div className="absolute top-1/2 w-full left-0 right-0 flex justify-around z-10 px-10">
-          <div className="w-5/7 justify-between flex">
+          <div className="w-8/10 justify-between flex">
             <motion.div
               className="w-13 h-13 p-2 flex border border-white rounded-full justify-center items-center bg-zinc-200"
               onClick={prevSlide}
@@ -87,130 +98,113 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="py-10 flex-grow">
-        <div className="w-full h-10 px-10 my-10 font-normal text-xl">
-          {/* Menu Application */}
+      <div className="py-10 w-full flex-grow">
+        <div className="w-full px-20  my-5 font-normal text-xl">
+          <h1 className="text-4xl font-medium">Application</h1>
         </div>
-        <div className="px-60 ">
-          <div className="grid grid-cols-5 gap-y-4 ">
-            <div className="flex justify-center w-full flex-col gap-y-4">
-              <div className="w-full flex justify-center">
-                <div className="dark:bg-[#70acffc9] bg-[#70acffc9]   my-1  justify-center rounded-2xl items-center flex  h-20 w-20 ">
-                  <img
-                    src={"/assets/HRIS.png"}
-                    alt="carousel"
-                    className="rounded-3xl h-15 w-15"
-                    style={{
-                      transform: "",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="flex w-full text-black justify-center">
-                HRIS Application
-              </div>
-            </div>
-            <div className="flex justify-center w-full flex-col gap-y-4">
-              <div className="w-full flex justify-center">
-                <div className="dark:bg-[#70acffc9] bg-[#70acffc9]   my-1  justify-center rounded-2xl items-center flex  h-20 w-20 ">
-                  <img
-                    src={"/assets/ID_Card.png"}
-                    alt="carousel"
-                    className="rounded-3xl h-15 w-15"
-                    style={{
-                      transform: "",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="flex w-full text-black justify-center">
-                ID Card
-              </div>
-            </div>
-            <div className="flex justify-center w-full flex-col gap-y-4">
-              <div className="w-full flex justify-center">
-                <div className="dark:bg-[#70acffc9] bg-[#70acffc9]   my-1  justify-center rounded-2xl items-center flex  h-20 w-20 ">
-                  <img
-                    src={"/assets/QR_Profile.png"}
-                    alt="carousel"
-                    className="rounded-3xl h-15 w-15"
-                    style={{
-                      transform: "",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="flex w-full text-black justify-center">
-                Qr Profile
-              </div>
-            </div>
-            <div className="flex justify-center w-full flex-col gap-y-4">
-              <div className="w-full flex justify-center">
-                <div className="dark:bg-[#70acffc9] bg-[#70acffc9]   my-1  justify-center rounded-2xl items-center flex  h-20 w-20 ">
-                  <img
-                    src={"/assets/ID_Card.png"}
-                    alt="carousel"
-                    className="rounded-3xl h-15 w-15"
-                    // style={{
-                    //   transform: "",
-                    // }}
-                  />
-                </div>
-              </div>
-              <div className="flex w-full text-black justify-center">
-                ID Card
-              </div>
-            </div>
-
-            <div className="flex justify-center w-full flex-col gap-y-4">
-              <div className="w-full flex justify-center">
-                <div className="dark:bg-[#70acffc9] bg-[#70acffc9]   my-1  justify-center rounded-2xl items-center flex  h-20 w-20 ">
-                  <img
-                    src={"/assets/TeamsLogo.png"}
-                    alt="carousel"
-                    className="rounded-3xl h-15 w-15"
-                    style={{
-                      transform: "",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="flex w-full text-black justify-center">Teams</div>
-            </div>
-            <div className="flex justify-center w-full flex-col gap-y-4">
-              <div className="w-full flex justify-center">
-                <div className="dark:bg-[#70acffc9] bg-[#70acffc9]   my-1  justify-center rounded-2xl items-center flex  h-20 w-20 ">
-                  <img
-                    src={"/assets/HRIS.png"}
-                    alt="carousel"
-                    className="rounded-3xl h-15 w-15"
-                    style={{
-                      transform: "",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="flex w-full text-black justify-center">
-                HRIS Application
-              </div>
-            </div>
-            <div className="flex justify-center w-full flex-col gap-y-4">
-              <div className="w-full flex justify-center">
-                <div className="dark:bg-[#70acffc9] bg-[#70acffc9]   my-1  justify-center rounded-2xl items-center flex  h-20 w-20 ">
-                  <img
-                    src={"/assets/HRIS.png"}
-                    alt="carousel"
-                    className="rounded-3xl h-15 w-15"
-                    style={{
-                      transform: "",
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="flex w-full text-black justify-center">
-                HRIS Application
-              </div>
-            </div>
+        <div className=" ">
+          <div className="grid px-20  grid-cols-5 gap-y-4 gap-x-2 ">
+            <CardApps
+              imageSrc={"/assets/HRIS.png"}
+              altText={"Logo"}
+              Title={"HRIS"}
+              subTitle={"HRIS Application"}
+            />
+            <CardApps
+              imageSrc={"/assets/ID_Card.png"}
+              altText={"Logo"}
+              Title={"ID Card"}
+              subTitle={"Profile ID Card "}
+            />
+            <CardApps
+              imageSrc={"/assets/ID_Card.png"}
+              altText={"Logo"}
+              Title={"QR Profile"}
+              subTitle={"QR to See a Profile of Employee"}
+            />
+            <CardApps
+              imageSrc={"/assets/HRIS.png"}
+              altText={"Logo"}
+              Title={"MS Teams"}
+              subTitle={"Collaboration app for hybrid work"}
+            />
+            <CardApps
+              imageSrc={"/assets/HRIS.png"}
+              altText={"Logo"}
+              Title={"HRIS"}
+              subTitle={"HRIS Application"}
+            />
+            <CardApps
+              imageSrc={"/assets/HRIS.png"}
+              altText={"Logo"}
+              Title={"HRIS"}
+              subTitle={"HRIS Application"}
+            />
+            <CardApps
+              imageSrc={"/assets/HRIS.png"}
+              altText={"Logo"}
+              Title={"HRIS"}
+              subTitle={"HRIS Application"}
+            />
+            <CardApps
+              imageSrc={"/assets/HRIS.png"}
+              altText={"Logo"}
+              Title={"HRIS"}
+              subTitle={"HRIS Application"}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="py-10 w-full flex-grow">
+        <div className="w-full px-20  my-5 font-normal text-xl">
+          <h1 className="text-4xl font-medium">Social Media</h1>
+        </div>
+        <div className=" ">
+          <div className="grid px-20  grid-cols-5 gap-y-4 gap-x-2 ">
+            <CardSm
+              imageSrc={"/assets/linkedInGarudaFood.jpeg"}
+              altText={"Logo"}
+              link={"https://www.linkedin.com/feed/"}
+              from={"LinkedIn"}
+              ProfilePicture={"/assets/linkedIn.jpeg"}
+              Username={"PT. Garudafood Putra Putri Jaya, Tbk "}
+              subTitle={
+                "Di Garudafood Group, kami percaya bahwa masa depan perusahaan yang sukses dimulai dari pendidikan anak-anak karyawan yang berbakat dan penuh potensi. 🎓💡"
+              }
+            />
+            <CardSm
+              imageSrc={"/assets/linkedInGarudaFoodWhite.jpeg"}
+              altText={"Logo"}
+              link={"https://www.linkedin.com/feed/"}
+              from={"LinkedIn"}
+              ProfilePicture={"/assets/linkedIn.jpeg"}
+              Username={"PT. Garudafood Putra Putri Jaya, Tbk "}
+              subTitle={
+                "Di Garudafood Group, kami percaya bahwa masa depan perusahaan yang sukses dimulai dari pendidikan anak-anak karyawan yang berbakat dan penuh potensi. 🎓💡"
+              }
+            />
+            <CardSm
+              imageSrc={"/assets/linkedInGarudaFood.jpeg"}
+              altText={"Logo"}
+              link={"https://www.linkedin.com/feed/"}
+              from={"LinkedIn"}
+              ProfilePicture={"/assets/linkedIn.jpeg"}
+              Username={"PT. Garudafood Putra Putri Jaya, Tbk "}
+              subTitle={
+                "Di Garudafood Group, kami percaya bahwa masa depan perusahaan yang sukses dimulai dari pendidikan anak-anak karyawan yang berbakat dan penuh potensi. 🎓💡"
+              }
+            />
+            <CardSm
+              imageSrc={"/assets/danaPrestasiSiswa.jpeg"}
+              altText={"Logo"}
+              link={"https://www.linkedin.com/feed/"}
+              from={"LinkedIn"}
+              ProfilePicture={"/assets/linkedIn.jpeg"}
+              Username={"PT. Garudafood Putra Putri Jaya, Tbk "}
+              subTitle={
+                "Di Garudafood Group, kami percaya bahwa masa depan perusahaan yang sukses dimulai dari pendidikan anak-anak karyawan yang berbakat dan penuh potensi. 🎓💡"
+              }
+            />
           </div>
         </div>
       </div>

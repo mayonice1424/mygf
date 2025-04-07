@@ -1,0 +1,70 @@
+@keyframes slide {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes slide-reverse {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(-0%);
+  }
+}
+
+.animate-slide {
+  overflow: hidden;
+  padding: 60px 0;
+  background: rgba(255, 255, 255, 0);
+  white-space: nowrap;
+  position: relative;
+}
+
+.animate-slide-reverse {
+  overflow: hidden;
+  padding: 60px 0;
+  background: rgba(255, 255, 255, 0);
+  white-space: nowrap;
+  position: relative;
+}
+
+/* .animate-slide:before,
+.animate-slide:after {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+} */
+
+/* .animate-slide:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+} */
+
+/* .animate-slide:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+} */
+/* 
+.animate-slide:hover .mover {
+  animation-play-state: paused;
+} */
+
+.mover {
+  display: inline-block;
+  animation: 10s slide infinite linear;
+}
+
+.mover-1 {
+  display: inline-block;
+  animation: 10s slide-reverse infinite linear;
+}
+/* .mover img {
+  height: 50px;
+  margin: 0 40px;
+} */

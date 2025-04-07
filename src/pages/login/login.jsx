@@ -40,14 +40,15 @@ export const Login = () => {
           <MdWbSunny className="text-amber-500 h-5 w-5" />
         )}
       </button>
-      <div class="relative w-full  lg:flex hidden  justify-center items-center">
+
+      <div class=" w-2/3  lg:flex hidden  justify-center items-center">
         <img
           src="/assets/product.png"
           alt="Background"
           class="w-full h-full object-cover"
         />
       </div>
-      <div className="bg-[url(/assets/product.png)] w-full flex justify-center items-center bg-no-repeat">
+      <div className=" lg:w-1/2 w-full flex justify-center items-center ">
         <div className=" lg:w-full w-full  h-auto flex flex-row justify-center">
           <div
             className=" w-full h-full flex justify-center items-center  "
@@ -102,12 +103,12 @@ export const Login = () => {
                       onClick={() => {
                         navigate("/dashboard");
                       }}
-                      className="bg-linear-to-t dark:bg-zinc-100 bg-zinc-900  w-full rounded-lg flex  py-2 dark:hover:bg-zinc-200 hover:bg-zinc-700 dark:hover:text-zinc-800  hover:text-gray-100 justify-center dark:text-black text-white font-medium"
+                      className="bg-linear-to-t dark:bg-zinc-100 bg-[#70acffc9] w-full rounded-lg flex  py-2 dark:hover:bg-zinc-200 hover:bg-blue-400 dark:hover:text-zinc-800  hover:text-gray-100 justify-center dark:text-black text-white font-medium"
                     >
                       Sign in
                     </div>
                     <div className="  w-full  flex justify-center font-normal">
-                      <p className="underline underline-offset-1 hover:no-underline">
+                      <p className="underline text-muted-foreground underline-offset-1 hover:no-underline">
                         Forgot your password?
                       </p>
                     </div>
